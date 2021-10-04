@@ -136,7 +136,7 @@ const parseContentToHTML = (lines) => {
 
     content.push('<ul>');
     lines.forEach((line) => {
-        content.push(Buffer.from(`<li class=\\"content-list-item\\">${line}</li>`));
+        content.push(Buffer.from(`<li class="content-list-item">${line}</li>`));
     });
     content.push('</ul>');
 
@@ -166,8 +166,8 @@ const parseSectionToHTML = (lines) => {
                 section.push('</div>');
             }
 
-            section.push('<div class=\\"section\\">');
-            section.push(`<div class=\\"section-title\\">${line.replace(REGEX.title, '')}</div>`);
+            section.push('<div class="section">');
+            section.push(`<div class="section-title">${line.replace(REGEX.title, '')}</div>`);
 
             lastType = 0;
         } else if (REGEX.li.test(line)) {
@@ -176,13 +176,13 @@ const parseSectionToHTML = (lines) => {
                 section.push('</div>');
             }
 
-            section.push('<div class=\\"section-item\\">');
+            section.push('<div class="section-item">');
             section.push(`${line.replace(REGEX.li, '')}`);
 
             lastType = 1;
         } else if (REGEX.nli.test(line)) {
             if (lastType === 1) {
-                section.push('<ul class=\\"section-item-list\\">');
+                section.push('<ul class="section-item-list">');
             }
 
             section.push(`<li>${line.replace(REGEX.nli, '')}</li>`);
