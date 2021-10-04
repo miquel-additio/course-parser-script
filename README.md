@@ -7,7 +7,7 @@ Parses courses content to its specific HTML structure in order to be properly re
 Clone the repository via:
 
 ```shell
-git clone https://github.com/miquel-additio/report-designer-idea.git
+git clone https://github.com/miquel-additio/course-parser-script.git
 ```
 
 `cd` into the folder and install all dependencies:
