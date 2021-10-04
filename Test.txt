@@ -1,0 +1,38 @@
+Mòdul 1: Evaluación en Additio
+> Creación de grupos y alumnos
+>> Creación de los grupos e importación de los alumnos
+> Evaluación básica de los alumnos
+>> Creación de notas y evaluación de los alumnos
+> Evaluación con rúbricas
+>> Creación de rúbricas y evaluación de los alumnos
+>> Autoevaluación y coevaluación
+> Medias y cálculos
+>> Creación de medias
+>> Creación de categorías
+Mòdul 2: Evaluación competencial del alumno 
+> Introducción a la evaluación competencial
+>> Creación de competencias y criterios
+> Evaluar las competencias
+>> Aplicar las competencias en las columnas
+>> Competencias en las rúbricas y en la planificación
+> Usos de las competencias
+>> Edición de columnas de competencias
+>> Ponderar la competencias y generar cálculos
+>> Diana de evaluación
+> Competencias transversales desde el panel de centros
+Mòdul 3: Edquizz, exámenes y cuestionarios: 
+> Creación de cuestionarios y envío a los alumnos
+>> Crear y conocer opciones del quizz
+>> Enviar a los alumnos y familias
+> Corrección del quizz 
+>> Corregir mediante rúbricas
+> Evaluación competencial del resultado 
+>> Aplicar competencia al examen
+Mòdul 4: Comunicación con el alumno y la família
+> Introducción a Edvoice
+>> Registro en Edvoice
+> Comunicación con el alumno y la familia
+>> Enviar información
+>> Realizar actividades y corregirlas
+>> Enviar quizz
+>> Autoevaluación y coevaluación

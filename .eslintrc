@@ -1,0 +1,15 @@
+{
+    "env": { "node": true },
+    "extends": ["prettier"],
+    "parserOptions": { "ecmaVersion": 12, "sourceType": "module" },
+    "rules": {
+        "no-shadow": "off",
+        "no-nested-ternary": "off",
+        "camelcase": "off",
+        "no-plusplus": "off",
+        "no-restricted-syntax": "off",
+        "no-console": "off",
+        "no-underscore-dangle": "off",
+        "no-alert": "off"
+    }
+}
