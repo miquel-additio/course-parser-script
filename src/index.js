@@ -184,8 +184,8 @@ const parseSectionToHTML = (lines) => {
                     section.push('</div>');
             }
 
-            section.push('<div class="section">');
-            section.push(`<div class="section-title">${line.replace(REGEX.title, '')}</div>`);
+            section.push('<div class=\\"section\\">');
+            section.push(`<div class=\\"section-title\\">${line.replace(REGEX.title, '')}</div>`);
 
             lastType = 0;
         }
