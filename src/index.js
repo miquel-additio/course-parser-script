@@ -160,13 +160,13 @@ const parseSectionToHTML = (lines) => {
                 section.push('</div>');
             }
 
-            section.push('<div class="section-item">');
+            section.push('<div class=\\"section-item\\">');
             section.push(`${line.replace(REGEX.li, '')}`);
 
             lastType = 1;
         } else if (REGEX.nli.test(line)) {
             if (lastType === 1) {
-                section.push('<ul class="section-item-list">');
+                section.push('<ul class=\\"section-item-list\\">');
             }
 
             section.push(`<li>${line.replace(REGEX.nli, '')}</li>`);
