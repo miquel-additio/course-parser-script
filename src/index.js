@@ -95,7 +95,7 @@ const checkOutputFolder = () => {
 
 /**
  * Reads and returns the lines of the given file asynchronously
- * 
+ *
  * @param {string} file File name to read
  * @returns {Promise<ReadFileResult>} The lines of the read file
  */
@@ -127,7 +127,7 @@ const writeLineToFile = (file) => (line) => {
 };
 
 /** Parses a content-type lines to its corresponding content
- * 
+ *
  * @param {string[]} lines The lines to parse to HTML
  * @returns {string[]} The parsed HTML lines
  */
@@ -145,7 +145,7 @@ const parseContentToHTML = (lines) => {
 
 /**
  * Parses a section-type lines to its corresponding content
- * 
+ *
  * @param {string[]} lines The lines to parse to HTML
  * @returns {string[]} The parsed HTML lines
  */
@@ -154,23 +154,7 @@ const parseSectionToHTML = (lines) => {
     const section = [];
 
     lines.forEach((line) => {
-        if (REGEX.title.test(line)) {
-            if (lastType === 1) {
-                section.push('</div>');
-                section.push('</div>');
-            }
-
-            if (lastType === 2) {
-                section.push('</ul>');
-                section.push('</div>');
-                section.push('</div>');
-            }
-
-            section.push('<div class="section">');
-            section.push(`<div class="section-title">${line.replace(REGEX.title, '')}</div>`);
-
-            lastType = 0;
-        } else if (REGEX.li.test(line)) {
+        if (REGEX.li.test(line)) {
             if (lastType === 2) {
                 section.push('</ul>');
                 section.push('</div>');
@@ -188,6 +172,22 @@ const parseSectionToHTML = (lines) => {
             section.push(`<li>${line.replace(REGEX.nli, '')}</li>`);
 
             lastType = 2;
+        } else {
+            switch (lastType) {
+                // Will add on cascade
+                case 2:
+                    section.push('</ul>');
+                    break;
+                case 1:
+                    section.push('</div>');
+                case 0:
+                    section.push('</div>');
+            }
+
+            section.push('<div class="section">');
+            section.push(`<div class="section-title">${line.replace(REGEX.title, '')}</div>`);
+
+            lastType = 0;
         }
     });
 
@@ -202,7 +202,7 @@ const parseSectionToHTML = (lines) => {
 
 /**
  * Parses the lines of a file
- * 
+ *
  * @param {object} o
  * @param {string} o.file Name of the input file
  * @param {string[]} o.lines Lines of the file to parse
