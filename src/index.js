@@ -88,6 +88,14 @@ const checkOutputFolder = () => {
 };
 
 /**
+ * Checks if a path is a file
+ *
+ * @param {string} path Path relative to `CONFIG.inputFolder`
+ * @returns {boolean}
+ */
+const isFile = (path) => fs.lstatSync(`${CONFIG.inputFolder}/${path}`).isFile();
+
+/**
  * @typedef {ReadFileResult}
  * @prop {string} file The name of the read file
  * @prop {string[]} lines The read lines splitted on `\n`
@@ -155,9 +163,12 @@ const parseSectionToHTML = (lines) => {
 
     lines.forEach((line) => {
         if (REGEX.li.test(line)) {
-            if (lastType === 2) {
-                section.push('</ul>');
-                section.push('</div>');
+            switch (lastType) {
+                // Will add on cascade
+                case 2:
+                    section.push('</ul>');
+                case 1:
+                    section.push('</div>');
             }
 
             section.push('<div class="section-item">');
@@ -177,7 +188,6 @@ const parseSectionToHTML = (lines) => {
                 // Will add on cascade
                 case 2:
                     section.push('</ul>');
-                    break;
                 case 1:
                     section.push('</div>');
                 case 0:
@@ -191,11 +201,15 @@ const parseSectionToHTML = (lines) => {
         }
     });
 
-    if (lastType === 2) {
-        section.push('</ul>');
-        section.push('</div>');
+    switch (lastType) {
+        // Will add on cascade
+        case 2:
+            section.push('</ul>');
+        case 1:
+            section.push('</div>');
+        case 0:
+            section.push('</div>');
     }
-    section.push('</div>');
 
     return section;
 };
@@ -247,7 +261,7 @@ const printErrors = () => {
  * @param {string[]} fileNames Files to parse inside `files/`
  */
 const parseFiles = async (fileNames) => {
-    return Promise.all(fileNames.map(readFile)).then((readFiles) => {
+    return Promise.all(fileNames.filter(isFile).map(readFile)).then((readFiles) => {
         checkOutputFolder();
 
         readFiles.map(parseFileContent);
